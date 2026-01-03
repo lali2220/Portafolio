@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Julio Inga Flores - Portafolio</title>
+    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/5024/5024509.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Estilos CSS modernos y profesionales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #ff6b6b;
+            --secondary: #4ecdc4;
+            --accent: #ffd166;
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
+            --gray: #64748b;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #1a1a2e);
+            background-size: 400% 400%;
+            animation: gradientBG 20s ease infinite;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Header fijo con navegación */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            margin-top: 100px; /* Espacio para el header fijo */
+        }
+
+        /* Header principal */
+        .hero {
+            text-align: center;
+            padding: 6rem 2rem 4rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, rgba(255, 107, 107, 0.1) 0%, transparent 70%);
+            z-index: -1;
+        }
+
+        .profile-circle {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            border: 5px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .profile-circle-inner {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: var(--light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark);
+            font-size: 4rem;
+        }
+
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 0.5rem;
+            font-weight: 800;
+            color: white;
+            letter-spacing: -0.02em;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #e2e8f0;
+            font-weight: 300;
+        }
+
+        .age {
+            font-size: 1.1rem;
+            background: rgba(255, 107, 107, 0.2);
+            color: #ff9e9e;
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            margin-top: 1rem;
+            border: 1px solid rgba(255, 107, 107, 0.3);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 107, 107, 0.3);
+        }
+
+        section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            margin: 4rem 0;
+            padding: 4rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            animation: fadeInUp 0.8s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        h2 {
+            color: white;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+
+        .section-content {
+            color: #e2e8f0;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .skill-card {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: var(--transition);
+        }
+
+        .skill-card:hover::before {
+            left: 100%;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 107, 107, 0.3);
+        }
+
+        .skill-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .skill-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: white;
+            font-weight: 600;
+        }
+
+        .skill-card p {
+            color: #94a3b8;
+            font-size: 0.95rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 107, 107, 0.3);
+        }
+
+        .project-card h3 {
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .project-card p {
+            color: #94a3b8;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tag {
+            background: rgba(255, 107, 107, 0.2);
+            color: #ff9e9e;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(255, 107, 107, 0.3);
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-item:hover {
+            transform: translateY(-3px);
+            border-color: rgba(255, 107, 107, 0.3);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .contact-item h3 {
+            color: white;
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .contact-item p {
+            color: #94a3b8;
+        }
+
+        .contact-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        button {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 107, 107, 0.3);
+            min-width: 180px;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(255, 107, 107, 0.4);
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem;
+            color: #94a3b8;
+            margin-top: 4rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+
+        .copyright {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                margin-top: 1rem;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .subtitle {
+                font-size: 1.2rem;
+            }
+
+            section {
+                padding: 2rem;
+                margin: 2rem 0;
+            }
+
+            .skills-grid,
+            .projects-grid,
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-circle {
+                width: 150px;
+                height: 150px;
+            }
+
+            .profile-circle-inner {
+                width: 130px;
+                height: 130px;
+                font-size: 3rem;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header fijo con navegación -->
+    <header class="header">
+        <div class="header-content">
+            <a href="#" class="logo">Portafolio<span>.</span></a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#about">Sobre Mí</a></li>
+                    <li><a href="#skills">Habilidades</a></li>
+                    <li><a href="#projects">Proyectos</a></li>
+                    <li><a href="#contact">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <header class="hero">
+            <div class="profile-circle">
+                <div class="profile-circle-inner">
+                    <i class="fas fa-code"></i>
+                </div>
+            </div>
+            <h1>Julio Inga Flores</h1>
+            <p class="subtitle">Desarrollador Full Stack & Ingeniero de Software</p>
+            <p class="age">Edad: 19 años</p>
+            <div class="social-links">
+                <a href="https://github.com/lali2220" class="social-link"><i class="fab fa-github"></i></a>
+                <a href="jxlio_2212" class="social-link"><i class="fab fa-discord"></i></a>
+                <a href="https://t.me/MrKernel" class="social-link"><i class="fab fa-telegram"></i></a>
+            </div>
+        </header>
+
+        <section id="about">
+            <h2>Sobre Mí</h2>
+            <div class="section-content">
+                <p>Soy un desarrollador apasionado de 19 años con experiencia en múltiples lenguajes de programación y tecnologías modernas. Me especializo en crear soluciones innovadoras y eficientes que combinan funcionalidad con un diseño impecable.</p>
+                <p>Mi enfoque se centra en escribir código limpio, escalable y bien documentado, siempre buscando las mejores prácticas de desarrollo y las últimas tendencias tecnológicas. Estoy comprometido con la excelencia técnica y la entrega de productos de alta calidad.</p>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2>Mis Habilidades</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>Pawn</h3>
+                    <p>Desarrollo de scripts para servidores de juegos y automatización</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fab fa-html5"></i>
+                    </div>
+                    <h3>HTML</h3>
+                    <p>Maquetación web semántica y estructura de contenido</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fab fa-css3-alt"></i>
+                    </div>
+                    <h3>CSS</h3>
+                    <p>Diseño responsive y animaciones modernas con CSS3</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fab fa-js"></i>
+                    </div>
+                    <h3>JavaScript</h3>
+                    <p>Interactividad, frameworks modernos y desarrollo full-stack</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fab fa-java"></i>
+                    </div>
+                    <h3>Java</h3>
+                    <p>Programación orientada a objetos y aplicaciones empresariales</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fab fa-python"></i>
+                    </div>
+                    <h3>Python</h3>
+                    <p>Automatización, análisis de datos y desarrollo backend</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <h3>C++</h3>
+                    <p>Programación de bajo nivel y desarrollo de sistemas</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-dragon"></i>
+                    </div>
+                    <h3>Lua</h3>
+                    <p>Scripting en aplicaciones y motores de juego</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Proyectos Destacados</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>Sistema de Gestión Web</h3>
+                    <p>Aplicación web completa usando tecnologías modernas para la gestión de inventarios y reportes en tiempo real.</p>
+                    <div class="project-tags">
+                        <span class="tag">HTML</span>
+                        <span class="tag">CSS</span>
+                        <span class="tag">JavaScript</span>
+                    </div>
+                    <button onclick="showProjectDetails('sistema-gestion')">Ver Detalles</button>
+                </div>
+                <div class="project-card">
+                    <h3>Juego en Pawn</h3>
+                    <p>Mod para servidor de juego con sistema de economía, minijuegos personalizados y sistema de niveles.</p>
+                    <div class="project-tags">
+                        <span class="tag">Pawn</span>
+                        <span class="tag">Game Dev</span>
+                        <span class="tag">Scripting</span>
+                    </div>
+                    <button onclick="showProjectDetails('juego-pawn')">Ver Detalles</button>
+                </div>
+                <div class="project-card">
+                    <h3>API en Python</h3>
+                    <p>API RESTful para procesamiento de datos con autenticación JWT y seguridad avanzada.</p>
+                    <div class="project-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">API</span>
+                        <span class="tag">Security</span>
+                    </div>
+                    <button onclick="showProjectDetails('api-python')">Ver Detalles</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Contacto</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email</h3>
+                    <p>juliocesaringa_2004@hotmail.com</p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3>Teléfono</h3>
+                    <p>+51-912-200-744</p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Ubicación</h3>
+                    <p>Lima, Perú</p>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>Desarrollador Full Stack & Ingeniero de Software</p>
+            <p>Especializado en tecnologías modernas y soluciones innovadoras</p>
+            <p class="copyright">&copy; 2026 Julio Inga Flores - Todos los derechos reservados</p>
+        </footer>
+    </div>
+
+    <script>
+        // JavaScript para funcionalidades interactivas modernas
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Portafolio de Julio Inga Flores cargado correctamente');
+
+            // Animaciones de scroll
+            const fadeElements = document.querySelectorAll('.skill-card, .project-card, .contact-item');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+            fadeElements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(element);
+            });
+
+            // Efecto de escritura en el subtítulo
+            const subtitle = document.querySelector('.subtitle');
+            const text = subtitle.textContent;
+            subtitle.textContent = '';
+
+            let i = 0;
+            const typingEffect = setInterval(() => {
+                if (i < text.length) {
+                    subtitle.textContent += text.charAt(i);
+                    i++;
+                } else {
+                    clearInterval(typingEffect);
+                }
+            }, 100);
+
+            // Smooth scrolling para enlaces de navegación
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    if (targetSection) {
+                        window.scrollTo({
+                            top: targetSection.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+
+        function showProjectDetails(projectId) {
+            const projectDetails = {
+                'sistema-gestion': 'Sistema de gestión web desarrollado con tecnologías modernas. Incluye funcionalidades de CRUD, autenticación de usuarios, reportes en tiempo real y una interfaz intuitiva.',
+                'juego-pawn': 'Mod para servidor de juego en Pawn con sistema de economía, minijuegos personalizados, sistema de niveles y características avanzadas de juego.',
+                'api-python': 'API RESTful desarrollada en Python con Flask, incluyendo autenticación JWT, manejo de errores, seguridad avanzada y documentación interactiva.'
+            };
+
+            alert(projectDetails[projectId] || 'Detalles del proyecto no disponibles');
+        }
+
+        function showContactForm() {
+            const email = prompt('Por favor ingresa tu email:');
+            if (email) {
+                const message = prompt('Escribe tu mensaje:');
+                if (message) {
+                    alert('¡Gracias por tu mensaje! Me pondré en contacto contigo pronto.');
+                    console.log(`Mensaje recibido de: ${email}, Mensaje: ${message}`);
+                }
+            }
+        }
+
+        function downloadCV() {
+            alert('Funcionalidad de descarga del CV. En una implementación real, aquí se descargaría un archivo PDF con mi currículum profesional.');
+        }
+    </script>
+</body>
+</html>
