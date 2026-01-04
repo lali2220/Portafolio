@@ -6,6 +6,7 @@
     <title>Julio Inga Flores - Portafolio</title>
     <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/5024/5024509.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
         /* Estilos CSS modernos y profesionales */
         * {
@@ -517,6 +518,39 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* Logo animation styles */
+        .logo {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .logo-animating {
+            animation: pulse 0.6s ease-in-out;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            transform: scale(0);
+            animation: ripple-animation 0.6s linear;
+            pointer-events: none;
+        }
+
+        @keyframes ripple-animation {
+            to {
+                transform: scale(2.5);
+                opacity: 0;
+            }
+        }
     </style>
 </head>
 <body>
@@ -543,7 +577,7 @@
                 </div>
             </div>
             <h1>Julio Inga Flores</h1>
-            <p class="subtitle">Desarrollador Full Stack & Ingeniero de Software</p>
+            <p class="subtitle">Desarrollador Full-Stack / Backend</p>
             <p class="age">Edad: 19 años</p>
             <div class="social-links">
                 <a href="https://github.com/lali2220" class="social-link"><i class="fab fa-github"></i></a>
@@ -686,7 +720,7 @@
         </section>
 
         <footer>
-            <p>Desarrollador Full Stack & Ingeniero de Software</p>
+            <p>Desarrollador Full-Stack / Backend</p>
             <p>Especializado en tecnologías modernas y soluciones innovadoras</p>
             <p class="copyright">&copy; 2026 Julio Inga Flores - Todos los derechos reservados</p>
         </footer>
@@ -754,7 +788,16 @@
                 'api-python': 'API RESTful desarrollada en Python con Flask, incluyendo autenticación JWT, manejo de errores, seguridad avanzada y documentación interactiva.'
             };
 
-            alert(projectDetails[projectId] || 'Detalles del proyecto no disponibles');
+            Swal.fire({
+                title: 'Detalles del Proyecto',
+                text: projectDetails[projectId] || 'Detalles del proyecto no disponibles',
+                icon: 'info',
+                confirmButtonText: 'Cerrar',
+                confirmButtonColor: '#ff6b6b',
+                background: '#1a1a2e',
+                color: '#e2e8f0',
+                iconColor: '#4ecdc4'
+            });
         }
 
         function showContactForm() {
@@ -769,7 +812,90 @@
         }
 
         function downloadCV() {
-            alert('Funcionalidad de descarga del CV. En una implementación real, aquí se descargaría un archivo PDF con mi currículum profesional.');
+            Swal.fire({
+                title: 'Descargar CV',
+                text: 'Funcionalidad de descarga del CV. En una implementación real, aquí se descargaría un archivo PDF con mi currículum profesional.',
+                icon: 'info',
+                confirmButtonText: 'Cerrar',
+                confirmButtonColor: '#ff6b6b',
+                background: '#1a1a2e',
+                color: '#e2e8f0',
+                iconColor: '#4ecdc4'
+            });
+        }
+
+        // Add animation to logo when clicked
+        document.addEventListener('DOMContentLoaded', function() {
+            const logo = document.querySelector('.logo');
+
+            logo.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                // Add animation class
+                this.classList.add('logo-animating');
+
+                // Create a ripple effect
+                const ripple = document.createElement('span');
+                ripple.classList.add('ripple');
+                this.appendChild(ripple);
+
+                // Remove ripple after animation
+                setTimeout(() => {
+                    ripple.remove();
+                    this.classList.remove('logo-animating');
+                }, 600);
+
+                // Show a message with SweetAlert2
+                Swal.fire({
+                    title: '¡Bienvenido!',
+                    text: 'Gracias por visitar mi portafolio. Julio Inga Flores - Desarrollador Full-Stack / Backend',
+                    icon: 'success',
+                    confirmButtonText: 'Genial',
+                    confirmButtonColor: '#ff6b6b',
+                    background: '#1a1a2e',
+                    color: '#e2e8f0',
+                    iconColor: '#4ecdc4'
+                });
+            });
+
+            // Show update notification on page load (only once per day)
+            showUpdateNotification();
+        });
+
+        // Function to show update notifications
+        function showUpdateNotification() {
+            // Check if notification was shown today
+            const lastShown = localStorage.getItem('updateNotificationShown');
+            const today = new Date().toDateString();
+
+            if (lastShown !== today) {
+                // Update the notification date
+                localStorage.setItem('updateNotificationShown', today);
+
+                // Show the update notification
+                Swal.fire({
+                    title: '🎉 ¡Novedades en el Portafolio!',
+                    html: `
+                        <div style="text-align: left; color: #e2e8f0;">
+                            <p><strong>Últimas actualizaciones:</strong></p>
+                            <ul style="margin-left: 20px; margin-top: 10px;">
+                                <li>Se agregó SweetAlert2 para notificaciones modernas</li>
+                                <li>Nueva animación al hacer clic en el logo</li>
+                                <li>Se implementó sistema de notificaciones de actualizaciones</li>
+                                <li>Mejoras en la experiencia de usuario</li>
+                            </ul>
+                            <p style="margin-top: 15px;">¡Gracias por visitar mi portafolio!</p>
+                        </div>
+                    `,
+                    icon: 'info',
+                    confirmButtonText: '¡Genial!',
+                    confirmButtonColor: '#ff6b6b',
+                    background: '#1a1a2e',
+                    color: '#e2e8f0',
+                    iconColor: '#4ecdc4',
+                    width: '600px'
+                });
+            }
         }
     </script>
 </body>
